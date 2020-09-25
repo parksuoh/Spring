@@ -236,6 +236,11 @@ input {
     box-sizing: border-box;
 }
 
+input.search {
+	width: 60px;
+	cursor: pointer;
+}
+
 input[type=checkbox] {
     width: auto;
     margin-right: 6px;

@@ -1,11 +1,20 @@
 package kr.co.kmarket.admin.service;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.kmarket.admin.dao.AdminProductDao;
+import kr.co.kmarket.admin.persistence.AdminProductsRepo;
 import kr.co.kmarket.vo.ProductVo;
 
 @Service
@@ -14,8 +23,13 @@ public class AdminProductService {
 	@Autowired
 	private AdminProductDao dao;
 	
+	
+	@Autowired
+	private AdminProductsRepo repo;
+	
+	
 	public void insertProduct(ProductVo vo) {
-		dao.insertProduct(vo);
+		repo.save(vo);
 	};
 	public ProductVo selectProduct() {
 		return dao.selectProduct();
@@ -23,14 +37,18 @@ public class AdminProductService {
 	public List<ProductVo> selectProducts(int start){
 		return dao.selectProducts(start);
 		};
+		
+	public List<ProductVo> selectProductsBySearch(int start,String opt, String keyword){
+		return dao.selectProductsBySearch(start, opt, keyword);
+	};
+		
+		
 	public void updateProduct() {
 		dao.updateProduct();
 	};
 	public void deleteProduct() {
 		dao.deleteProduct();
 	};
-	
-	
 	
 	
 	
@@ -70,7 +88,66 @@ public class AdminProductService {
 			return (total - start) + 1;
 		}
 		
-	
-	
+		
+		@Value("${upload.path}")
+		public String uploadPath;
+		
+		
+		public ProductVo uploadThumb(ProductVo vo) {
+			
+			//썸네일 업로드
+			String path = new File(uploadPath).getAbsolutePath();
+			
+			MultipartFile[] files = {vo.getFile1(), vo.getFile2(),vo.getFile3(),vo.getFile4(),};
+			
+			
+			
+			for (int i = 0 ; i<4 ; i++ ) {
+				
+				MultipartFile file = files[i];
+				
+				if(!file.isEmpty()) {
+					
+					String name = file.getOriginalFilename();
+					String ext = name.substring(name.lastIndexOf("."));
+					
+					String uName = UUID.randomUUID().toString()+ext;
+					String fullPath = path+"/"+vo.getCate1()+"/"+vo.getCate2()+"/";
+					
+					
+					try {
+						
+						Path root = Paths.get(fullPath);
+						Files.createDirectories(root);
+						
+						file.transferTo(new File(fullPath+uName));
+						
+						if(i==0) vo.setThumb1(uName);
+						if(i==1) vo.setThumb2(uName);
+						if(i==2) vo.setThumb3(uName);
+						if(i==3) vo.setDetail(uName);
+						
+						
+					}catch(IllegalStateException e) {
+						e.printStackTrace();
+					}catch (IOException e) {
+						e.printStackTrace();
+					}
+					
+					
+			
+					
+					
+				}
+				
+				
+			}
+			
+			
+			return vo;
+			
+		}
+		
+		
 	
 }

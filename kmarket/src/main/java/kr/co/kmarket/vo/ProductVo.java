@@ -1,18 +1,37 @@
 package kr.co.kmarket.vo;
 
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+import net.bytebuddy.implementation.bind.annotation.IgnoreForBinding;
 
 @Getter
 @Setter
+@Entity
+@Table(name="km_products")
+@ToString
 public class ProductVo {
 	
+
+	@Id
 	private int code;
 	private int cate1;
 	private int cate2;
 	private String name;
-	private String desc;
+	private String descript;
 	private String company;
+	private String seller;
 	private int price;
 	private int discount;
 	private int point;
@@ -26,7 +45,7 @@ public class ProductVo {
 	private String dutyFree;
 	private String receipt;
 	private String bizClass;
-	private String orgin;
+	private String origin;
 	private String ip;
 	private String rdate;
 	private int etc1;
@@ -34,4 +53,14 @@ public class ProductVo {
 	private String etc3;
 	private String etc4;
 	private String etc5;
+	
+	// 추가 필드
+	@Transient
+	private MultipartFile file1;
+	@Transient
+	private MultipartFile file2;
+	@Transient	
+	private MultipartFile file3;
+	@Transient
+	private MultipartFile file4;
 }

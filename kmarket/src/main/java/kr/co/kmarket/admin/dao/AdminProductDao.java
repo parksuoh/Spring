@@ -11,11 +11,15 @@ public interface AdminProductDao {
 	
 	
 	public void insertProduct(ProductVo vo);
+	
 	public ProductVo selectProduct();
 	public List<ProductVo> selectProducts(int start);
+	
 	public void updateProduct();
 	public void deleteProduct();
 	
 	public int selectCountProducts();
 	
+	public List<ProductVo> selectProductsBySearch(int start, String opt, String keyword);
+
 }
