@@ -36,7 +36,7 @@ public class AdminProductService {
 	};
 	public List<ProductVo> selectProducts(int start){
 		return dao.selectProducts(start);
-		};
+	};
 		
 	public List<ProductVo> selectProductsBySearch(int start,String opt, String keyword){
 		return dao.selectProductsBySearch(start, opt, keyword);
@@ -46,8 +46,8 @@ public class AdminProductService {
 	public void updateProduct() {
 		dao.updateProduct();
 	};
-	public void deleteProduct() {
-		dao.deleteProduct();
+	public int deleteProduct(String[] codes) {
+		return dao.deleteProduct(codes);
 	};
 	
 	
@@ -98,7 +98,7 @@ public class AdminProductService {
 			//썸네일 업로드
 			String path = new File(uploadPath).getAbsolutePath();
 			
-			MultipartFile[] files = {vo.getFile1(), vo.getFile2(),vo.getFile3(),vo.getFile4(),};
+			MultipartFile[] files = {vo.getFile1(), vo.getFile2(),vo.getFile3(),vo.getFile4()};
 			
 			
 			

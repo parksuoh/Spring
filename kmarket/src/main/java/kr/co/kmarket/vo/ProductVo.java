@@ -36,7 +36,11 @@ public class ProductVo {
 	private int discount;
 	private int point;
 	private int stock;
+	private int sold;
+	
 	private int delivery;
+	private int hit;
+	private int score;
 	private String thumb1;
 	private String thumb2;
 	private String thumb3;
@@ -55,6 +59,8 @@ public class ProductVo {
 	private String etc5;
 	
 	// 추가 필드
+	@Transient
+	private int salePrice;
 	@Transient
 	private MultipartFile file1;
 	@Transient

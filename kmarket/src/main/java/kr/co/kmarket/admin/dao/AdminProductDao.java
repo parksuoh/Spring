@@ -16,10 +16,10 @@ public interface AdminProductDao {
 	public List<ProductVo> selectProducts(int start);
 	
 	public void updateProduct();
-	public void deleteProduct();
+	public int deleteProduct(String[] codes);
 	
 	public int selectCountProducts();
 	
 	public List<ProductVo> selectProductsBySearch(int start, String opt, String keyword);
-
+	
 }
