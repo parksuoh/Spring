@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>userpage</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+    <section class="userpage">
+
+        <h2></h2>
+        <h3><a th:href="@{/user/checkpass}">개인정보 수정</a></h3>
+        <h3><a th:href="@{/user/userboard}">내 개시물</a></h3>
+        <h3><a th:href="@{/board/list}">게시판이동</a></h3>
+        <h3><a th:href="@{/user/logout}">로그아웃</a></h3>
+
+    </section>
+
+
+    
+</body>
+</html>

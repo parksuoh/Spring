@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>view</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+    <header>
+        <a th:href="@{/board/list}" class="backbtn">뒤로</a>
+        <a th:href="@{/user/userpage}" class="userbtn">유저</a>
+    </header>
+    <section class="view">
+
+            <div class="viewtop">
+                <h3>자유 게시판 </h3>
+                <a th:href="@{/board/list}" class="backbtn">목록</a>
+                <a class="writebtn" th:href="@{/board/write}">글쓰기</a>
+            </div>
+            <div class="viewtitle">
+                <h3>[[${article.title}]]</h3></br>
+                <span id="viewdate">[[${article.rdate.substring(2, 10)}]]</span>
+                <div>
+                    <span id="nick">홍길동</span>
+                    조회<span id="hits">[[${article.hit}]]</span>
+                    댓글<span id="recommend">[[${article.comment}]]</span>
+                </div>
+            </div>
+            <div class="viewcontent">
+                <div class="viewconbtn1">
+                    <a th:href="@{/board/modify(seq=${article.seq})}">수정</a>
+                    <a th:href="@{/board/delete(seq=${article.seq})}" method="get">삭제</a>
+                </div>
+                <h1>[[${article.content}]]</h1>
+                <div class="viewcontbtn2">
+                    <a th:href="@{'/board/good/' + ${article.seq}}" name="good" method="get">좋아요 [[${article.good}]]</a>
+                    <a th:href="@{'/board/bed/' + ${article.seq}}" name="bed" method="get">싫어요 [[${article.bed}]]</a>
+                </div>
+            </div>
+            <div class="commentwrite">
+                <form th:action="@{'/board/comment/' + ${article.seq}}" method="POST">
+                    <h5>댓글쓰기</h5>
+                    <textarea name="content"></textarea>
+                    <input type="hidden" name="uid" th:value="${session.uid}">
+					<input type="hidden" name="nick" th:value="${session.nick}">
+                    <input type="submit" value="댓글등록">
+                </form>
+            </div>
+            <div class="commentlist">
+                <h4>댓글목록</h4>
+                <div class="comment" th:each="comment:${comments}">
+                    <div class="commentnick">
+                        <h5>[[${comment.nick}]]</h5><span id="viewdate">[[${comment.rdate.substring(2, 10)}]]</span>
+                    </div>
+                    <div class="commentcon">
+                        <h3>[[${comment.content}]] </h3>
+                        <div>
+                            <a th:href="@{/board/comment/delete(seq=${comment.seq})}" method="get">삭제</a>
+                        </div>
+                    </div>
+
+            	</div>
+
+
+
+    </section>
+</body>
+</html>

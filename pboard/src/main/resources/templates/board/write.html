@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>write</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+    <header>
+        <a th:href="@{/board/list}" class="backbtn">뒤로</a>
+        <a th:href="@{/user/userpage}" class="userbtn">유저</a>
+    </header>
+    <section class="write">
+        <form th:action="@{/board/write}" method="POST" class="writeform">
+            <div class="writetop">
+                <h3>자유 게시판 </h3>
+                <button><a th:href="@{/board/list}">취소</a></button>
+                <input type="submit" value="작성완료">
+            </div>
+            
+            <input type="text" class="title" name="title" placeholder="제목">
+
+            <textarea name="content"></textarea>
+			<input type="hidden" name="uid" th:value="${session.uid}">
+			<input type="hidden" name="nick" th:value="${session.nick}">
+
+        </form>
+
+
+
+    </section>
+</body>
+</html>

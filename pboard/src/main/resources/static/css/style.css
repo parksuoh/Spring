@@ -1,0 +1,650 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+header {
+    width: 100%;
+    border-bottom: 1px solid #D3D3D3;
+    padding: 10px;
+    position: relative;
+    
+}
+header >:nth-child(1) {
+    text-decoration: none;
+    color: black;
+}
+header >:nth-child(2) {
+    position: absolute;
+    right: 30px;
+    text-decoration: none;
+    color: black;
+}
+/*list*/
+.list{
+    width: 100%;
+    display: block;
+}
+.listtop{
+    border-bottom: 1px solid #D3D3D3;
+    padding: 10px;
+    display: flex;
+}
+.listtop > :nth-child(1){
+    flex: 7;
+    padding-top: 5px;
+}
+
+.listtop > :nth-child(2) > :nth-child(1){
+    width: 100px;
+    height: 25px;
+}
+.listtop > :nth-child(2) > :nth-child(2){
+    width: 200px;
+    height: 20px;
+}
+.listtop > :nth-child(2) > :nth-child(3){
+    width: 50px;
+    height: 27px;
+    margin-right: 5px;
+    border: none;
+    background-color: #778899;
+    cursor: pointer;
+}
+.listtop > :nth-child(3){
+    width: 70px;
+    height: 22px;
+    margin-right: 5px;
+    border: none;
+    background-color: #DB7093;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    padding-top: 5px;
+    padding-left: 20px;
+}
+
+.listbtns{
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #D3D3D3;
+}
+
+.listbtns> :nth-child(1){
+    width: 60%;
+    height: 30px;
+    border: 1px solid #4682B4;
+    background-color: #4682B4;
+    cursor: pointer;
+}
+.listbtns> :nth-child(2), 
+.listbtns> :nth-child(3){
+    width: 19%;
+    height: 30px;
+    border: 1px solid #4682B4;
+    background-color: white;
+    cursor: pointer;
+}
+
+.lists{
+    width: 100%;
+    padding: 0 10px 0 10px;
+}
+.alist{
+    width: 100%;
+    padding: 5px;
+    border-bottom: 1px solid #D3D3D3;
+}
+.alist1{
+    margin-bottom: 3px;
+}
+.alist1 > h1 > a{
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.alist2 {
+    width: 100%;
+    display: flex;
+}
+.alist2 > :nth-child(1){
+    flex: 9 ;
+}
+.alist2 > :nth-child(2){
+    flex: 1 ;
+    color: #4682B4;
+}
+.alist2 > :nth-child(3){
+    flex: 1 ;
+    color: #800000;
+}
+.alist2 > :nth-child(4){
+    flex: 1 ;
+    color: #32CD32;
+}   
+.alist2 > :nth-child(5){
+    flex: 3 ;
+    color: #778899;
+}
+.paging{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+.paging  a{
+    text-decoration: none;
+    color: #778899;
+    border: 1px solid #778899;
+    padding: 8px;
+    margin: 0 3px 0 3px;
+    text-align: center;
+     
+}
+
+/* view*/
+
+.viewtop{
+    border-bottom: 1px solid #D3D3D3;
+    padding: 10px;
+    display: flex;
+}
+.viewtop > :nth-child(1){
+    flex: 7;
+    padding-top: 5px;
+}
+
+.viewtop > :nth-child(2) {
+	color:balck;
+	text-decoration: none;
+	padding: 5px 10px 5px 10px;
+    margin-right: 5px;
+    border: 1px solid  #778899;
+    background-color: white;
+
+}
+.viewtop > :nth-child(3){
+	color:white;
+	padding: 5px 10px 5px 10px;
+	text-decoration: none;
+    margin-right: 5px;
+    border: none;
+    background-color: #DB7093;
+
+}
+
+.viewtitle {
+    width: 100%;
+    border-bottom: 1px solid #D3D3D3;
+    box-sizing: border-box;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.viewtitle > h3 {
+    font-size: 22px;
+    font-weight: bold;
+    padding-top: 5px;
+}
+.viewtitle > span {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+.viewtitle > div > span {
+    font-size: 15px;
+}
+
+.viewcontent{
+    padding: 15px;
+    width: 100%;
+    border-bottom: 1px solid #D3D3D3;
+}
+.viewconbtn1{
+    width: 100%;
+}
+.viewconbtn1 a{
+	padding: 5px;
+    border: none;
+    text-decoration: none;
+    margin-bottom: 5px;
+    color:black;
+    background-color: #D3D3D3;
+}
+.viewcontent > h1{
+    margin-top: 20px;
+    width: 100%;
+    min-height: 200px;
+} 
+.viewcontbtn2 {
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.viewcontbtn2 a{
+	padding: 5px;
+    margin: 5px;
+    text-decoration: none;
+	color:black;
+	background-color: #D3D3D3;
+}
+.viewcontbtn2 >:nth-child(1){
+    background-color: #D3D3D3;
+}
+.viewcontbtn2 >:nth-child(2){
+    background-color: #D3D3D3;
+}
+
+.commentwrite > form{
+    padding: 15px;
+    width: 100%;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+.commentwrite  > form > textarea {
+    height: 80px;
+    margin: 15px 0 15px 0;
+    resize: none;
+}
+
+.commentwrite > form > input{
+    height: 40px;
+    border: none;
+    background-color: #F08080;
+    cursor: pointer;
+}
+
+.commentlist {
+    width: 100%;
+    padding: 15px;
+    border-top: 1px solid  #D3D3D3;
+    box-sizing: border-box;
+}
+.comment{
+    margin-top: 10px;
+    box-sizing: border-box;
+    display: block;
+}
+.commentnick {
+    width: 100%;
+    display: flex;
+    margin: 5px 0 5px 0;
+}
+.commentnick > h5{
+    font-weight: bold;
+}
+.commentnick span{
+    font-size: 12px;
+    margin-left: 80px;
+}
+.commentcon{
+    width: 100%;
+
+}
+.commentcon > div{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.commentcon h3 {
+    margin-bottom: 5px;
+}
+.commentcon a {
+    text-decoration: none;
+    color: #778899;
+    font-size: 14px;
+    margin: 0 5px 0 5px;
+
+
+}
+
+.cocomment{
+    background-color: #F5F5F5;
+    margin-left: 50px;
+    margin-bottom: 10px;
+}
+
+/* write */
+
+.write {
+    width: 100%;
+    padding: 15px;
+}
+.writeform {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.writetop {
+    width: 100%;
+    border-bottom: 1px solid  #778899;
+    display: flex;
+    padding-bottom: 5px;
+}
+.writetop  > h3 {
+    flex: 6;
+}
+.writetop > :nth-child(2){
+    width: 60px;
+    height: 25px;
+    background-color: white;
+    margin-right: 5px;
+    cursor: pointer;
+
+}
+.writetop > :nth-child(2) > a{
+	text-decoration: none;
+	color: black;
+}
+.writetop > :nth-child(3){
+    width: 80px;
+    height: 25px;
+    background-color: #F08080;
+    border: none;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.writeform > :nth-child(2){
+    margin: 10px 0 10px 0;
+    width: 100%;
+    height: 30px;
+}
+
+.writeform > :nth-child(3){
+    width: 100%;
+    min-height: 500px;
+}
+
+/* terms */
+.terms{
+    width: 100%;
+    padding: 15px;
+}
+.termstop {
+    width: 100%;
+    display: flex;
+    padding: 5px 0 5px 0;
+    border-bottom: 1px solid  #778899;
+}
+.termstop > :nth-child(1){
+    flex: 7;
+}
+.termstop > :nth-child(2){
+    margin-right: 20px;
+    width: 80px;
+    height: 25px;
+    background-color: #F08080;
+    border: none;
+    margin-right: 15px;
+    cursor: pointer;
+}
+.checkall {
+    width: 100%;
+    padding: 5px 0 5px 0;
+    border-bottom: 1px solid  #778899;
+}
+.term1 {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid  #778899;
+    padding: 5px 0 5px 0;
+}
+.term1 > :nth-last-child(2){
+    margin: 5px 0 5px 0;
+    
+    height: 100px;
+    
+    resize: none;
+}
+
+
+/* 게시판 가입 */
+
+.register {
+    width: 100%;
+}
+.register > form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.register > form >h3{
+    padding-bottom: 15px;
+    border-bottom: 1px solid #778899;
+}
+.register > form >h4{
+    padding:15px 0 15px 0;
+    font-weight: bold;
+}
+
+.register > form input {
+    height: 27px;
+    margin: 10px 0 10px 0;
+}
+
+.register > form p {
+    font-size: 13px;
+    color: #000080;
+}
+.regibtn{
+    display: flex;
+    flex-direction: row-reverse;
+    padding-right: 30px;
+}
+
+.regibtn > :nth-child(1){
+    margin-left: 10px;
+    width: 80px;
+    height: 25px;
+    background-color: #F08080;
+    border: none;
+    cursor: pointer;
+
+}
+
+.regibtn > :nth-child(2){
+    width: 60px;
+    height: 25px;
+    background-color: #C0C0C0;
+    margin-right: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+/* 비밀번호 확인*/
+.passcheck {
+    width: 100%;
+}
+
+.pcform{
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+.checkpasstop{
+    width: 100%;
+    padding: 5px 0 5px 0;
+    border-bottom: 1px solid #778899;
+    margin-bottom: 50px;
+}
+.pcform > h3, 
+.pcform > h2,
+.pcform > h1{
+    text-align: center;
+    margin-bottom: 10px;
+}
+.pcform > h3{
+    font-weight: bold;
+}
+.pcform > h2{
+    color:  #000080;
+}
+.pcid{
+    margin-top: 30px;
+}
+.pcid >h2,
+.pcid >h3{
+    margin-bottom: 5px;
+}
+.pcid >h3{
+    font-weight: bold;
+}
+.regiinput,
+.regiinput2{
+    width: 100%;
+    height: 25px;
+}
+.regiinput2{
+    margin-top: 5px;
+    background-color: #F08080;
+    border: none;
+    cursor: pointer;
+}
+
+/*userboard*/
+.userboard{
+    width: 100%;
+}
+.ubtop{
+    width: 100%;
+    background-color: #4682B4;
+    padding: 10px 5px 10px 5px;
+}
+
+.ubtop > h2{
+    color: white;
+    margin-bottom: 15px;
+}
+.userboard > h1 {
+    padding: 10px;
+    border-bottom: 1px solid #778899;
+}
+
+.mvlistbx{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+.mvlist{
+    margin: 0 auto;
+    background-color:  #F08080;
+    text-decoration: none;
+    color: black;
+    padding: 8px;
+}
+
+/* login */
+.login{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #B0E0E6;
+}
+.login > form {
+    width: 300px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.id > input,
+.pass > input{
+    width: 250px;
+    height: 25px;
+    margin-bottom: 15px;
+    border: none;
+    background-color:  #B0E0E6;
+    border-bottom: 1px solid #F5FFFA;
+}
+.loginbtn >input {
+    width: 250px;
+    height: 25px;
+    cursor: pointer;
+    border: none;
+    background-color: #F5FFFA;
+}
+.register1 > a{
+    text-decoration: none;
+    color: #778899;
+    border-bottom: 1px solid #778899;
+}
+
+/* userpage */
+
+.userpage{
+    width: 100%;
+    height: 100vh;
+    background-color:  #B0E0E6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+.userpage h3{
+    margin-top: 15px;
+}
+.userpage h3 > a {
+    color: #696969;
+    text-decoration: none;
+}
+.userpage h3 > a:hover {
+    border-bottom: 1px solid #696969;
+}

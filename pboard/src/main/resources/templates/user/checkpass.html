@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>checkpass</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+	
+<body>
+    <header>
+        <a th:href="@{/user/logout}" class="backbtn">로그아웃</a>
+        <a th:href="@{/user/userpage}" class="userbtn">유저</a>
+    </header>
+    <section class="passcheck">
+        <form th:action="@{/user/checkpass}" class="pcform" method="POST">
+            <div class="checkpasstop">
+                <h3>회원 비밀번호 확인</h3>
+            </div>
+    
+            <h3>회원 비밀번호 확인</h3>
+            <h2>비밀번호를 한번 더 입력해주세요.</h2>
+            <h1>회원님의 정보를 안전하게 보호하기 위해 비밀번호를 한번더 확인합니다.</h1>
+            
+            <div class="pcid">
+                <h2>회원아이디</h2>
+                <input type="text" name="uid" class="sessuid" readonly th:value="${session.uid}">
+            </div>
+            <input type="password" name="pass" class="regiinput" placeholder=비밀번호>
+            <input type="submit" class="regiinput2" value="확인">
+        </form>
+
+    </section>
+</body>
+</html>

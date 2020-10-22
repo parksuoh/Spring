@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>modify</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+    <header>
+        <a href="#" class="backbtn">뒤로</a>
+        <a href="#" class="userbtn">유저</a>
+    </header>
+    <section class="write">
+        <form th:action="@{'/board/modify/' + ${article.seq}}" class="writeform" method="post">
+            <div class="writetop">
+                <h3>자유 게시판 글수정</h3>
+                <input type="button" value="취소">
+                <input type="submit" value="작성완료">
+            </div>
+            <input type="text" class="title" name="title" th:value="${article.title}">
+
+            <textarea name="content" th:text="${article.content}"></textarea>
+        </form>
+
+
+
+    </section>
+</body>
+</html>

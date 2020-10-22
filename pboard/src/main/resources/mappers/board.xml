@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+
+<mapper namespace="kr.co.pboard.dao.BoardDao">
+	
+	
+	
+	<insert id="insertArticle">
+		INSERT INTO `PBOARD_ARTICLE` SET
+			`title`=#{title},
+			`content`=#{content},
+			`rdate`=NOW(),
+			`uid`=#{uid},
+			`nick`=#{nick},
+			`parent`=0;
+	</insert>
+	
+	<select id="selectArticles" resultType="kr.co.pboard.vo.ArticleVo">
+		SELECT * FROM `PBOARD_ARTICLE` 
+		ORDER BY `seq` DESC
+		LIMIT #{start}, 10;
+	</select>
+	
+	<select id="selectCountArticles" resultType="int">
+		SELECT COUNT(*) FROM `PBOARD_ARTICLE`;
+
+	</select>
+	
+	<select id="selectArticlesBySearch" resultType="kr.co.pboard.vo.ArticleVo">
+		SELECT * FROM `PBOARD_ARTICLE` WHERE 
+		<if test="opt.equals('titcon')">
+			`content` LIKE '%${keyword}%' OR  `title` LIKE '%${keyword}%'
+		</if>
+		<if test="opt.equals('title')">
+			`title` LIKE '%${keyword}%'
+		</if>
+		<if test="opt.equals('content')">
+			`content` LIKE '%${keyword}%'
+		</if>
+		<if test="opt.equals('nick')">
+			`nick` LIKE '%${keyword}%'
+		</if>
+		LIMIT ${start}, 10;
+	</select>
+	
+	<select id="selectArticle" resultType="kr.co.pboard.vo.ArticleVo">
+		SELECT * FROM `PBOARD_ARTICLE`
+		WHERE `seq`= #{seq};
+
+	</select>
+	
+	<delete id="deleteArticle" parameterType="int">
+		DELETE FROM `PBOARD_ARTICLE` 
+		WHERE `seq` = #{seq};
+
+	</delete>
+	
+	<update id="modifyArticle" parameterType="kr.co.pboard.vo.ArticleVo">
+		UPDATE `PBOARD_ARTICLE` 
+		SET		
+		`title` = #{title},
+		`content` = #{content} 
+		WHERE `seq`= #{seq};		
+	</update>
+	
+	<update id="goodArticle" parameterType="kr.co.pboard.vo.ArticleVo">
+		UPDATE `PBOARD_ARTICLE` 
+		SET
+		`good` = good+1  
+		WHERE `seq`= #{seq};		
+	</update>
+	
+	<update id="bedArticle" parameterType="kr.co.pboard.vo.ArticleVo">
+		UPDATE `PBOARD_ARTICLE` 
+		SET
+		`bed` = bed+1  
+		WHERE `seq`= #{seq};		
+	</update>
+	<update id="hitArticle" parameterType="kr.co.pboard.vo.ArticleVo">
+		UPDATE `PBOARD_ARTICLE` 
+		SET
+		`hit` = `hit` +1  
+		WHERE `seq`= #{seq};		
+	</update>
+	
+	<insert id="insertComment">
+	INSERT INTO `PBOARD_COMMENT` SET
+		`parent`=#{seq},
+		`content`=#{content},
+		`rdate`=NOW(),
+		`uid`=#{uid},
+		`nick`=#{nick};
+	</insert>
+	
+	<select id="selectComments" resultType="kr.co.pboard.vo.CommentVo">
+		SELECT * FROM `PBOARD_COMMENT`
+		WHERE `parent` = #{seq}
+		ORDER BY `seq` DESC;
+	</select>
+	
+	<delete id="deleteComment" parameterType="int">
+		DELETE FROM `PBOARD_COMMENT` 
+		WHERE `seq` = #{seq};
+
+	</delete>
+	  	<!--
+	<insert id="insertUser">
+		INSERT INTO `USER3` VALUES (#{uid}, #{name}, #{hp}, #{age});		
+	</insert>
+	
+	<select id="selectUser" resultType="kr.co.kmarket.vo.UserVO">
+		SELECT * FROM `USER3` WHERE `uid`=#{uid};
+	</select>
+	
+	<select id="selectUsers" resultType="kr.co.kmarket.vo.UserVO">
+		SELECT * FROM `USER3`;
+	</select>
+	
+	<update id="updateUser">
+		UPDATE `USER3` SET		
+		`name`=#{name},
+		`hp`=#{hp},
+		`age`=#{age} 
+		WHERE `uid`=#{uid};		
+	</update>
+	
+	<delete id="deleteUser">
+		DELETE FROM `USER3` WHERE `uid`=#{uid};
+	</delete>
+		<select id="selectProducts" resultType="kr.co.kmarket.vo.ProductVo">
+		SELECT * FROM `km_products` LIMIT #{start}, 10;
+	</select>
+
+	<select id="selectCountProducts" resultType="int">
+		SELECT COUNT(*) FROM `km_products`;
+
+	</select>
+	
+	<select id="selectProductsBySearch" resultType="kr.co.kmarket.vo.ProductVo">
+		SELECT * FROM `km_products` WHERE 
+		<if test="opt.equals('name')">
+			`name` LIKE '%${keyword}%'
+		</if>
+		<if test="opt.equals('code')">
+			`code` = '${keyword}'
+		</if>
+		<if test="opt.equals('company')">
+			`company` LIKE '%${keyword}%'
+		</if>
+		<if test="opt.equals('seller')">
+			`seller` LIKE '%${keyword}%'
+		</if>
+		LIMIT ${start}, 10;
+	</select>
+	
+	<delete id="deleteProduct" parameterType="int">
+		DELETE FROM `km_products` WHERE `code` IN
+		<foreach collection="array" item="code" open="(" separator="," close=")">
+			#{code}
+		</foreach>;
+	</delete>
+	
+	<update id="modifyArticle" parameterType="kr.co.pboard.vo.ArticleVo">
+		UPDATE `PBOARD_ARTICLE` SET		
+		`title`= #{title},
+		`content`= #{content} 
+		WHERE `seq`=#{seq};		
+	</update>
+	
+		  -->
+</mapper>

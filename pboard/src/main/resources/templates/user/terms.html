@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>terms</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script th:inline="javascript">
+    	
+	    $(function(){
+			
+			$('input.termsbtn').click(function(){
+				
+
+				location.href='/pboard/user/register';
+			
+				
+			});
+			
+
+			
+			$("input[type='button']").hide();
+			
+			$("input[type='checkbox']").change(function(){
+				var a1 = $("#term1check").is(":checked");
+				var a2 = $("#term2check").is(":checked");
+				var aa = $("#checkall").is(":checked");
+				if(a1 && a2){
+					$("input[type='button']").show();
+				}else if(aa){
+					$("input[type='button']").show();
+				}else if(aa==false && a1 && a2){
+					$("input[type='button']").show();
+				}else if(aa==false && a1==false || a2==false){
+					$("input[type='button']").hide();
+				}
+				});
+			
+			$("#checkall").change(function(){
+				var aa = $(this).is(":checked");
+				var a1 = $("#term1check").is(":checked");
+				var a2 = $("#term2check").is(":checked");
+				if(aa){
+					 $("#term1check").prop('checked', true);
+					 $("#term2check").prop('checked', true);
+
+				}else{
+					$("#term1check").prop('checked', false);
+					$("#term2check").prop('checked', false);
+				}
+				
+
+			});
+
+			
+			
+		});
+	    
+    </script>
+</head>
+<body>
+    <header>
+        <a th:href="@{/}" class="backbtn">뒤로</a>
+        <a href="#" class="userbtn">유저</a>
+    </header>
+    <section class="terms">
+
+            <div class="termstop">
+                <h3>게시판 가입 약관</h3>
+                <input type="button" value="게시판 가입" class="termsbtn">
+            </div>
+            <div class="checkall">
+                <input type="checkbox" id="checkall">
+                <label for="checkall">전체동의</label>
+            </div>
+            <div class="term1">
+                <h2>게시판 가입약관</h2>
+                <textarea readonly>[[${termsVo.terms1}]]</textarea>
+                <div class="term1check">
+                    <input type="checkbox" id="term1check">
+                    <label for="term1check">게시판 가입약관의 내용에 동의합니다.</label>
+                </div>
+            </div>
+            <div class="term1">
+                <h2>개인정보처리방침안내</h2>
+                <textarea readonly>[[${termsVo.terms2}]]</textarea>
+                <div class="term1check">
+                    <input type="checkbox" id="term2check">
+                    <label for="term1check">개인정보처리방침안내의 내용에 동의합니다.</label>
+                </div>
+            </div>
+
+
+
+
+    </section>
+</body>
+</html>

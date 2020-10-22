@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>userboard</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+
+    <section class="userboard">
+        <div class="ubtop">
+            <h2>홍길동의 게시글</h2>
+        </div>
+        <h1>총 5개</h1>
+        <div class="lists">
+            <div class="alist">
+                <div class="alist1">
+                    <h1><a href="#">게시물 입니다.</a></h1>
+                </div>
+                <div class="alist2">
+                    <span id="nick">홍길동</span>
+                    조회<span id="hits">100</span>
+                    추천<span id="recommend">10</span>
+                    댓글<span id="comment">5</span>
+                    <span id="ubdate">2020-09-25 </span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="paging">
+            <a href="#" class="prev">이전</a>
+            <a href="#" class="num current">1</a>                
+            <a href="#" class="num">2</a>                
+            <a href="#" class="num">3</a>                
+            <a href="#" class="next">다음</a>
+        </div>
+        <div class="mvlistbx">
+            <a th:href="@{/board/list}" class="mvlist">자유게시판 이동</a>
+        </div>
+        
+    </section>
+
+
+
+</body>
+</html>

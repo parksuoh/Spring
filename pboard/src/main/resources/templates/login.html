@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+    <section class="login">
+        <form th:action="@{/login}" method="POST">
+            <div class="id">
+                <input type="text" name="uid" placeholder="아이디">
+            </div>
+            <div class="pass">
+                <input type="password" name="pass" placeholder="비밀번호">
+            </div>
+            <div class="loginbtn">
+                <input type="submit" value="로그인">
+            </div>
+        </form>
+
+        <div class="register1">
+            <a th:href="@{/user/terms}">게시판 가입</a>
+        </div>
+    </section>
+    
+</body>
+</html>

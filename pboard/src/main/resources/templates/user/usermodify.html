@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>usermodify</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script th:inline="javascript">
+    	
+	    $(function(){
+			
+			
+			$("input[name='pass2']").focusout(function(){
+		        var passwordVal = $("input[name='pass']").val();
+		        var checkVal = $("input[name='pass2']").val();
+		        if (passwordVal != checkVal ) {
+		        	$("span").remove(".errorpass");
+		            $("input[name='pass2']").after('<span class="errorpass">비밀번호가 일치 하지 않습니다.</span>');
+		            
+		        }else if (passwordVal == checkVal ){
+		        	$("span").remove(".errorpass");
+		        	$("input[name='pass2']").after('<span class="errorpass">비밀번호가 일치 합니다.</span>');
+		        }
+		    });
+			
+			
+		});
+	    
+    </script>
+</head>
+<body>
+    <header>
+        <a th:href="@{/board/list}" class="backbtn">뒤로</a>
+        <a th:href="@{/board/userpage}" class="userbtn">유저</a>
+    </header>
+    <section class="register">
+        <form th:action="@{/user/usermodify}" method="POST">
+            <h3>회원 정보 수정</h3>
+            <h4>사이트 이용 정보 입력</h4>
+            <input type="text" class="regiinput" placeholder="아이디" name="uid" readonly th:value="${session.uid}">
+            <p>영문자, 숫자,_만 입력 가능. 최소 3자이상 입력하세요.</p>
+            <input type="password" class="regiinput" name="pass" placeholder=비밀번호 th:value="${session.pass}">
+            <input type="password" class="regiinput" name="pass2" placeholder="비밀번호확인" th:value="${session.pass}">
+
+            <h4>개인정보 입력</h4>
+            <input type="text" class="regiinput" placeholder="실명" name="name" readonly th:value="${session.name}">
+
+            <p>
+                공백없이 한글,영문,숫자만 입력 가능 (한글2자, 영문4자 이상) <br>
+                닉네임을 바꾸시면 앞으로 60일 이내에는 변경할 수 없습니다.
+            </p>
+            <input type="text" class="regiinput" placeholder="닉네임" name="nick" th:value="${session.nick}">
+
+            <p>E-mail 로 발송된 내용을 확인한 후 인증하셔야 게시판 가입이 완료됩니다.</p>
+            <input type="text" class="regiinput" placeholder="E-mail" name="email" th:value="${session.email}">
+
+            <input type="text" class="regiinput" placeholder="휴대폰번호" name="phone" th:value="${session.phone}">
+
+            <div class="regibtn">
+                <input type="submit" value="게시판 가입">
+                <input type="button" value="취소">
+                
+            </div>
+        </form>
+        
+
+
+
+    </section>
+</body>
+</html>
