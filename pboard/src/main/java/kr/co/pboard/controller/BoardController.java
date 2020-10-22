@@ -145,6 +145,8 @@ public class BoardController {
 		
 		service.insertComment(vo);
 		
+		service.updateComment(vo);
+		
 		return "redirect:/board/list";
 	}
 	

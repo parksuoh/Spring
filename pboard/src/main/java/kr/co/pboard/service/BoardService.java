@@ -61,12 +61,18 @@ public class BoardService {
 		dao.insertComment(vo);
 	}
 	
+	public void updateComment(CommentVo vo) {
+		dao.updateComment(vo);
+	}
+	
 	public List<CommentVo> selectComments(int seq){
 		return dao.selectComments(seq);
 	}
 	public void deleteComment(int seq) {
 		dao.deleteComment(seq);
 	}
+	
+	
 	
 	//Limit start 계산
 			public int getLimitStart(String pg) {

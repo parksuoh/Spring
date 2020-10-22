@@ -79,7 +79,7 @@
 		`bed` = bed+1  
 		WHERE `seq`= #{seq};		
 	</update>
-	<update id="hitArticle" parameterType="kr.co.pboard.vo.ArticleVo">
+	<update id="hitArticle" parameterType="kr.co.pboard.vo.CommentVo">
 		UPDATE `PBOARD_ARTICLE` 
 		SET
 		`hit` = `hit` +1  
@@ -94,6 +94,13 @@
 		`uid`=#{uid},
 		`nick`=#{nick};
 	</insert>
+	
+	<update id="updateComment" parameterType="kr.co.pboard.vo.CommentVo">
+		UPDATE `PBOARD_ARTICLE` 
+		SET
+		`comment` = `comment` +1  
+		WHERE `seq`= #{seq};		
+	</update>
 	
 	<select id="selectComments" resultType="kr.co.pboard.vo.CommentVo">
 		SELECT * FROM `PBOARD_COMMENT`
@@ -169,6 +176,8 @@
 		`content`= #{content} 
 		WHERE `seq`=#{seq};		
 	</update>
+	
+
 	
 		  -->
 </mapper>

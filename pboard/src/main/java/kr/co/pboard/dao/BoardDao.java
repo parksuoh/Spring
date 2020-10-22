@@ -32,8 +32,12 @@ public interface BoardDao {
 	
 	public void insertComment(CommentVo vo);
 	
+	public void updateComment(CommentVo vo);
+	
 	public List<CommentVo> selectComments(int seq);
 	
 	public void deleteComment(int seq);
+	
+	
 
 }
